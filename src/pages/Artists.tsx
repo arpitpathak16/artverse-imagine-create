@@ -1,18 +1,9 @@
 import { useState } from "react";
-import { Filter, Search } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ArtistCard from "@/components/ArtistCard";
-import ArtServiceCard from "@/components/ArtServiceCard";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import FilterSection from "@/components/artists/FilterSection";
+import ArtistsList from "@/components/artists/ArtistsList";
+import ServicesSection from "@/components/artists/ServicesSection";
 
 const artistsData = [
   {
@@ -65,41 +56,6 @@ const artistsData = [
   },
 ];
 
-const servicesData = [
-  {
-    title: "Live Event Sketching",
-    description: "Quick portrait sketches at events, weddings, or corporate gatherings",
-    priceRange: "₹5,000 - ₹15,000",
-    duration: "4-6 hours",
-    tags: ["Live Art", "Events", "Portraits", "Quick Sketch"],
-    imageUrl: "https://images.unsplash.com/photo-1579783901586-d88db74b4fe4",
-  },
-  {
-    title: "Portrait Commission",
-    description: "Detailed custom portraits in various mediums (oil, acrylic, digital)",
-    priceRange: "₹8,000 - ₹25,000",
-    duration: "1-2 weeks",
-    tags: ["Portrait", "Custom", "Traditional", "Digital"],
-    imageUrl: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99",
-  },
-  {
-    title: "Wedding Photography Art",
-    description: "Transform your wedding photos into unique artistic interpretations",
-    priceRange: "₹20,000 - ₹50,000",
-    duration: "2-3 weeks",
-    tags: ["Wedding", "Mixed Media", "Photography", "Custom"],
-    imageUrl: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458",
-  },
-  {
-    title: "Caricature Art",
-    description: "Fun and expressive caricatures for events or personal use",
-    priceRange: "₹3,000 - ₹8,000",
-    duration: "1-2 hours",
-    tags: ["Caricature", "Events", "Fun", "Quick Art"],
-    imageUrl: "https://images.unsplash.com/photo-1613312232067-d7a2d9f1d3c9",
-  },
-];
-
 const Artists = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredArtists, setFilteredArtists] = useState(artistsData);
@@ -132,6 +88,13 @@ const Artists = () => {
     setFilteredArtists(filtered);
   };
 
+  const handleResetFilters = () => {
+    setSearchTerm("");
+    setSelectedLocation("");
+    setSelectedSpecialty("");
+    setFilteredArtists(artistsData);
+  };
+
   return (
     <div className="min-h-screen bg-artverse-light">
       <Navbar />
@@ -149,130 +112,22 @@ const Artists = () => {
       </div>
 
       <div className="page-container">
-        <div className="mb-8 rounded-lg bg-white p-4 shadow-sm sm:p-6">
-          <div className="mb-6 flex items-center">
-            <Filter className="mr-2 h-5 w-5 text-artverse-purple" />
-            <h2 className="font-medium text-gray-800">Filter Artists</h2>
-          </div>
+        <FilterSection
+          searchTerm={searchTerm}
+          selectedLocation={selectedLocation}
+          selectedSpecialty={selectedSpecialty}
+          onSearchChange={setSearchTerm}
+          onLocationChange={setSelectedLocation}
+          onSpecialtyChange={setSelectedSpecialty}
+          onFilterApply={handleFilter}
+        />
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div>
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <Input
-                  type="text"
-                  placeholder="Search by name or location"
-                  className="pl-10"
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                />
-              </div>
-            </div>
+        <ArtistsList 
+          artists={filteredArtists}
+          onResetFilters={handleResetFilters}
+        />
 
-            <div>
-              <Select
-                value={selectedLocation}
-                onValueChange={setSelectedLocation}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Filter by location" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All locations</SelectItem>
-                  <SelectItem value="Jaipur">Jaipur</SelectItem>
-                  <SelectItem value="Varanasi">Varanasi</SelectItem>
-                  <SelectItem value="Mysore">Mysore</SelectItem>
-                  <SelectItem value="Delhi">Delhi</SelectItem>
-                  <SelectItem value="Kolkata">Kolkata</SelectItem>
-                  <SelectItem value="Jodhpur">Jodhpur</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div>
-              <Select
-                value={selectedSpecialty}
-                onValueChange={setSelectedSpecialty}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Filter by specialty" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All specialties</SelectItem>
-                  <SelectItem value="Oil Painting">Oil Painting</SelectItem>
-                  <SelectItem value="Watercolor">Watercolor</SelectItem>
-                  <SelectItem value="Sculpture">Sculpture</SelectItem>
-                  <SelectItem value="Digital Art">Digital Art</SelectItem>
-                  <SelectItem value="Folk Art">Folk Art</SelectItem>
-                  <SelectItem value="Miniature">Miniature</SelectItem>
-                  <SelectItem value="Fabric Art">Fabric Art</SelectItem>
-                  <SelectItem value="Tribal">Tribal</SelectItem>
-                  <SelectItem value="Mixed Media">Mixed Media</SelectItem>
-                  <SelectItem value="Portraits">Portraits</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-          </div>
-
-          <div className="mt-4 flex justify-end">
-            <Button
-              onClick={handleFilter}
-              className="bg-artverse-purple text-white hover:bg-artverse-deepPurple"
-            >
-              Apply Filters
-            </Button>
-          </div>
-        </div>
-
-        <div className="mb-6">
-          <p className="text-sm text-gray-600">
-            Showing {filteredArtists.length} artists
-          </p>
-        </div>
-
-        {filteredArtists.length > 0 ? (
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredArtists.map((artist) => (
-              <ArtistCard key={artist.id} {...artist} />
-            ))}
-          </div>
-        ) : (
-          <div className="flex flex-col items-center justify-center rounded-lg bg-white py-16">
-            <p className="text-lg font-medium text-gray-800">
-              No artists found matching your criteria
-            </p>
-            <p className="mt-1 text-gray-500">
-              Try adjusting your filters to see more results
-            </p>
-            <Button
-              onClick={() => {
-                setSearchTerm("");
-                setSelectedLocation("");
-                setSelectedSpecialty("");
-                setFilteredArtists(artistsData);
-              }}
-              variant="outline"
-              className="mt-4"
-            >
-              Reset filters
-            </Button>
-          </div>
-        )}
-      </div>
-
-      <div className="mt-16">
-        <div className="mb-8">
-          <h2 className="font-serif text-3xl font-bold">Art Services</h2>
-          <p className="mt-2 text-gray-600">
-            Discover various art services offered by our talented artists
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {servicesData.map((service, index) => (
-            <ArtServiceCard key={index} {...service} />
-          ))}
-        </div>
+        <ServicesSection />
       </div>
 
       <Footer />
