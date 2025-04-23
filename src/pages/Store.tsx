@@ -124,7 +124,7 @@ const Store = () => {
       );
     }
 
-    if (selectedCategory) {
+    if (selectedCategory && selectedCategory !== "all") {
       filtered = filtered.filter(
         (artwork) => artwork.category === selectedCategory
       );
@@ -218,7 +218,7 @@ const Store = () => {
                   <SelectValue placeholder="Art category" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All categories</SelectItem>
+                  <SelectItem value="all">All categories</SelectItem>
                   <SelectItem value="Oil Painting">Oil Painting</SelectItem>
                   <SelectItem value="Watercolor">Watercolor</SelectItem>
                   <SelectItem value="Acrylic">Acrylic</SelectItem>
