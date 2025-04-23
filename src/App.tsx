@@ -10,6 +10,7 @@ import Commission from "./pages/Commission";
 import Store from "./pages/Store";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Community from "./pages/Community";
 
 const queryClient = new QueryClient();
 

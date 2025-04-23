@@ -1,13 +1,11 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import ArticleCard from "@/components/ArticleCard";
 import CommunityGroup from "@/components/CommunityGroup";
 import { Link } from "react-router-dom";
-import { Article, Group, User } from "lucide-react";
+import { FileText, Group, User } from "lucide-react";
 
-// Mock data for initial display
 const articles = [
   {
     id: "1",
@@ -92,7 +90,7 @@ const Community = () => {
             </div>
             <Button variant="ghost" className="text-artverse-purple" asChild>
               <Link to="/community/articles">
-                View all articles <Article className="ml-2 h-4 w-4" />
+                View all articles <FileText className="ml-2 h-4 w-4" />
               </Link>
             </Button>
           </div>
