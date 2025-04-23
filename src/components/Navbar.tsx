@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, Image, User, ShoppingBag } from "lucide-react";
@@ -43,6 +42,14 @@ const Navbar = () => {
                 className="text-gray-700 transition hover:text-artverse-purple"
               >
                 Art Store
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/community"
+                className="text-gray-700 transition hover:text-artverse-purple"
+              >
+                Community
               </Link>
             </li>
             <li>
@@ -120,6 +127,15 @@ const Navbar = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Art Store
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/community"
+                className="block py-2 text-gray-700 transition hover:text-artverse-purple"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Community
               </Link>
             </li>
             <li>
