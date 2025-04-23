@@ -52,6 +52,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				artverse: {
+					purple: '#5E4C9F',
+					deepPurple: '#3C2A70',
+					terracotta: '#E07A5F',
+					gold: '#D9A566',
+					cream: '#F7F3EB',
+					light: '#F9F7F3',
+					dark: '#2D2638'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
