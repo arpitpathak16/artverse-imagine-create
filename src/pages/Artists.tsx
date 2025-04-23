@@ -147,7 +147,7 @@ const Artists = () => {
                   <SelectValue placeholder="Filter by location" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All locations</SelectItem>
+                  <SelectItem value="all">All locations</SelectItem>
                   <SelectItem value="Jaipur">Jaipur</SelectItem>
                   <SelectItem value="Varanasi">Varanasi</SelectItem>
                   <SelectItem value="Mysore">Mysore</SelectItem>
@@ -167,7 +167,7 @@ const Artists = () => {
                   <SelectValue placeholder="Filter by specialty" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All specialties</SelectItem>
+                  <SelectItem value="all">All specialties</SelectItem>
                   <SelectItem value="Oil Painting">Oil Painting</SelectItem>
                   <SelectItem value="Watercolor">Watercolor</SelectItem>
                   <SelectItem value="Sculpture">Sculpture</SelectItem>
