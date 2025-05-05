@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Image, Palette, User } from "lucide-react";
@@ -8,71 +7,59 @@ import ArtistCard from "@/components/ArtistCard";
 import ArtworkCard from "@/components/ArtworkCard";
 
 // Mock data
-const featuredArtists = [
-  {
-    id: "1",
-    name: "Priya Sharma",
-    location: "Jaipur, Rajasthan",
-    imageUrl: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99",
-    specialties: ["Oil Painting", "Folk Art", "Miniature"],
-    rating: 4.9,
-  },
-  {
-    id: "2",
-    name: "Arun Patel",
-    location: "Varanasi, UP",
-    imageUrl: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458",
-    specialties: ["Sculpture", "Metal Work", "Contemporary"],
-    rating: 4.7,
-  },
-  {
-    id: "3",
-    name: "Maya Reddy",
-    location: "Mysore, Karnataka",
-    imageUrl: "https://images.unsplash.com/photo-1569172122301-bc5008bc09c5",
-    specialties: ["Fabric Art", "Tribal", "Mixed Media"],
-    rating: 4.8,
-  },
-];
-
-const featuredArtworks = [
-  {
-    id: "1",
-    title: "Sunset Over the Ganges",
-    artistName: "Arun Patel",
-    imageUrl: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853",
-    price: 12500,
-    category: "Oil Painting",
-  },
-  {
-    id: "2",
-    title: "Delhi Market Scene",
-    artistName: "Priya Sharma",
-    imageUrl: "https://images.unsplash.com/photo-1582657118090-af35eefc4e48",
-    price: 8900,
-    category: "Watercolor",
-  },
-  {
-    id: "3",
-    title: "Dancing Deities",
-    artistName: "Maya Reddy",
-    imageUrl: "https://images.unsplash.com/photo-1569172122301-bc5008bc09c5",
-    price: 15700,
-    category: "Sculpture",
-  },
-  {
-    id: "4",
-    title: "Monsoon Dreams",
-    artistName: "Vikram Singh",
-    imageUrl: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9",
-    price: 9500,
-    category: "Mixed Media",
-  },
-];
-
+const featuredArtists = [{
+  id: "1",
+  name: "Priya Sharma",
+  location: "Jaipur, Rajasthan",
+  imageUrl: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99",
+  specialties: ["Oil Painting", "Folk Art", "Miniature"],
+  rating: 4.9
+}, {
+  id: "2",
+  name: "Arun Patel",
+  location: "Varanasi, UP",
+  imageUrl: "https://images.unsplash.com/photo-1578926375605-eaf7559b1458",
+  specialties: ["Sculpture", "Metal Work", "Contemporary"],
+  rating: 4.7
+}, {
+  id: "3",
+  name: "Maya Reddy",
+  location: "Mysore, Karnataka",
+  imageUrl: "https://images.unsplash.com/photo-1569172122301-bc5008bc09c5",
+  specialties: ["Fabric Art", "Tribal", "Mixed Media"],
+  rating: 4.8
+}];
+const featuredArtworks = [{
+  id: "1",
+  title: "Sunset Over the Ganges",
+  artistName: "Arun Patel",
+  imageUrl: "https://images.unsplash.com/photo-1578321272176-b7bbc0679853",
+  price: 12500,
+  category: "Oil Painting"
+}, {
+  id: "2",
+  title: "Delhi Market Scene",
+  artistName: "Priya Sharma",
+  imageUrl: "https://images.unsplash.com/photo-1582657118090-af35eefc4e48",
+  price: 8900,
+  category: "Watercolor"
+}, {
+  id: "3",
+  title: "Dancing Deities",
+  artistName: "Maya Reddy",
+  imageUrl: "https://images.unsplash.com/photo-1569172122301-bc5008bc09c5",
+  price: 15700,
+  category: "Sculpture"
+}, {
+  id: "4",
+  title: "Monsoon Dreams",
+  artistName: "Vikram Singh",
+  imageUrl: "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9",
+  price: 9500,
+  category: "Mixed Media"
+}];
 const Index = () => {
-  return (
-    <div className="min-h-screen bg-artverse-light">
+  return <div className="min-h-screen bg-artverse-light">
       <Navbar />
       
       {/* Hero Section */}
@@ -86,20 +73,11 @@ const Index = () => {
               <p className="max-w-md text-lg text-gray-100">
                 Connect with local artists, commission unique pieces, and bring your creative visions to life through both AI and human art.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="bg-artverse-terracotta text-white hover:bg-artverse-terracotta/90"
-                  asChild
-                >
+              <div className="flex flex-wrap gap-4 bg-[#817f6e]/0">
+                <Button size="lg" className="bg-artverse-terracotta text-white hover:bg-artverse-terracotta/90" asChild>
                   <Link to="/commission">Commission Art</Link>
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-white text-white hover:bg-white hover:text-artverse-deepPurple"
-                  asChild
-                >
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-artverse-deepPurple" asChild>
                   <Link to="/store">Browse Art</Link>
                 </Button>
               </div>
@@ -108,34 +86,18 @@ const Index = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <div className="overflow-hidden rounded-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5"
-                      alt="Art piece"
-                      className="h-40 w-full object-cover"
-                    />
+                    <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5" alt="Art piece" className="h-40 w-full object-cover" />
                   </div>
                   <div className="overflow-hidden rounded-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1569172122301-bc5008bc09c5"
-                      alt="Art piece"
-                      className="h-56 w-full object-cover"
-                    />
+                    <img src="https://images.unsplash.com/photo-1569172122301-bc5008bc09c5" alt="Art piece" className="h-56 w-full object-cover" />
                   </div>
                 </div>
                 <div className="mt-8 space-y-4">
                   <div className="overflow-hidden rounded-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9"
-                      alt="Art piece"
-                      className="h-56 w-full object-cover"
-                    />
+                    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9" alt="Art piece" className="h-56 w-full object-cover" />
                   </div>
                   <div className="overflow-hidden rounded-lg">
-                    <img
-                      src="https://images.unsplash.com/photo-1560421683-6856ea585c78"
-                      alt="Art piece"
-                      className="h-40 w-full object-cover"
-                    />
+                    <img src="https://images.unsplash.com/photo-1560421683-6856ea585c78" alt="Art piece" className="h-40 w-full object-cover" />
                   </div>
                 </div>
               </div>
@@ -198,19 +160,14 @@ const Index = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-baseline justify-between">
             <h2 className="section-title">Featured Artists</h2>
-            <Link
-              to="/artists"
-              className="flex items-center text-sm font-medium text-artverse-purple hover:text-artverse-deepPurple"
-            >
+            <Link to="/artists" className="flex items-center text-sm font-medium text-artverse-purple hover:text-artverse-deepPurple">
               View all
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {featuredArtists.map((artist) => (
-              <ArtistCard key={artist.id} {...artist} />
-            ))}
+            {featuredArtists.map(artist => <ArtistCard key={artist.id} {...artist} />)}
           </div>
         </div>
       </section>
@@ -220,19 +177,14 @@ const Index = () => {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 flex items-baseline justify-between">
             <h2 className="section-title">Featured Artworks</h2>
-            <Link
-              to="/store"
-              className="flex items-center text-sm font-medium text-artverse-purple hover:text-artverse-deepPurple"
-            >
+            <Link to="/store" className="flex items-center text-sm font-medium text-artverse-purple hover:text-artverse-deepPurple">
               Browse store
               <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {featuredArtworks.map((artwork) => (
-              <ArtworkCard key={artwork.id} {...artwork} />
-            ))}
+            {featuredArtworks.map(artwork => <ArtworkCard key={artwork.id} {...artwork} />)}
           </div>
         </div>
       </section>
@@ -241,11 +193,7 @@ const Index = () => {
       <section className="relative overflow-hidden py-16 text-white">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-artverse-deepPurple/90"></div>
-          <img
-            src="https://images.unsplash.com/photo-1616530834117-9247af32dc3f"
-            alt="Art background"
-            className="h-full w-full object-cover"
-          />
+          <img src="https://images.unsplash.com/photo-1616530834117-9247af32dc3f" alt="Art background" className="h-full w-full object-cover" />
         </div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
@@ -255,11 +203,7 @@ const Index = () => {
             <p className="mt-4 text-lg text-gray-200">
               Describe your vision, get an AI preview, and collaborate with artists to bring it to life.
             </p>
-            <Button
-              size="lg"
-              className="mt-8 bg-artverse-terracotta text-white hover:bg-artverse-terracotta/90"
-              asChild
-            >
+            <Button size="lg" className="mt-8 bg-artverse-terracotta text-white hover:bg-artverse-terracotta/90" asChild>
               <Link to="/commission">Start a Commission</Link>
             </Button>
           </div>
@@ -267,8 +211,6 @@ const Index = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
